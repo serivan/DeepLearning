@@ -1,0 +1,2 @@
+{'n_hidden': 2, 'hidden_units': 211, 'learning_rate': 0.0008119015815876429, 'dropout': 0.025054480961881016, 'hidden_activation': 'sigmoid', 'batch_norm': 'True', 'activity_regularizer': 'True', 'batch_size': 48}
+0.8519700229167938

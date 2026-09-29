@@ -1,0 +1,29 @@
+import tensorflow as tf
+from tensorflow.keras import layers, Model
+
+# Define the input
+inputs = tf.keras.Input(shape=(28, 28))
+
+# Flatten the input
+flatten = layers.Flatten()(inputs)
+
+# First dense layers
+dense1 = layers.Dense(200, activation='relu')(flatten)
+dense2 = layers.Dense(50, activation='relu')(dense1)
+
+# Skip connection: concatenate the original input (flatten) with the output of dense2
+concat = layers.Concatenate()([flatten, dense2])
+
+# Continue through the remaining dense layers
+dense3 = layers.Dense(50, activation='relu')(concat)
+dense4 = layers.Dense(50, activation='relu')(dense3)
+dense5 = layers.Dense(50, activation='relu')(dense4)
+
+# Output layer
+outputs = layers.Dense(10)(dense5)
+
+# Define the model
+model = Model(inputs=inputs, outputs=outputs)
+
+# Print model summary
+model.summary()
